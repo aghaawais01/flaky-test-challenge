@@ -22,7 +22,11 @@ describe('Sign Up', () => {
     cy.get('input[type="submit"]')
       .click()
 
-    cy.get('li')
+    /* Just added a timeout here for this specific element. 
+    Another solution can be to increase the default timeout 
+    of cypress commands in cypress.json, which is 4 seconds 
+    by default. */
+    cy.get('li', { timeout: 6000 })
       .should('contain', 'Some Name - some@email.com - core - git-it')
   })
 })
